@@ -80,10 +80,13 @@ export const OrderSummary: React.FC<Props> = ({ appCtx, readonly }) => {
       <TotalWrapper>
         <AmountSpacer />
         <AmountWrapper>
-          <CouponOrGiftCard
-            readonly={readonly}
-            setCouponOrGiftCard={appCtx.setCouponOrGiftCard}
-          />
+          {/*
+            TODO: will be enabled later
+            <CouponOrGiftCard
+              readonly={readonly}
+              setCouponOrGiftCard={appCtx.setCouponOrGiftCard}
+            />
+          */}
           <RecapLine>
             <RecapLineItem>{t("orderRecap.subtotal_amount")}</RecapLineItem>
             <SubTotalAmount />
