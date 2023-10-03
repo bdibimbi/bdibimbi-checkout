@@ -44,11 +44,11 @@ export const PaymentSourceContainer = styled.div`
   // }
 
   .adyen-checkout-form-instruction {
-    ${tw`mb-4 font-sans `}
+    ${tw`mb-4 font-sofia `}
   }
 
   .adyen-checkout__label__text {
-    ${tw`text-base font-medium font-sans`}
+    ${tw`text-base font-medium font-sofia`}
   }
 
   .adyen-checkout__input {
