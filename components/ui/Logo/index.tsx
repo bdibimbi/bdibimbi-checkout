@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import tw from "twin.macro"
+import Link from "next/link"
 
 interface Props {
   logoUrl?: string
@@ -9,9 +10,17 @@ interface Props {
 
 export const Logo: React.FC<Props> = ({ logoUrl, companyName, className }) => {
   if (logoUrl) {
-    return <Image src={logoUrl} alt={companyName} className={className} />
+    return (
+      <Link href={process.env.NEXT_PUBLIC_MAIN_URL ?? "/"}>
+        <Image src={logoUrl} alt={companyName} className={className} />
+      </Link>
+    )
   }
-  return <Label className={className}>{companyName}</Label>
+  return (
+    <Link href={process.env.NEXT_PUBLIC_MAIN_URL ?? "/"}>
+      <Label className={className}>{companyName}</Label>
+    </Link>
+  )
 }
 
 const Image = styled.img`
