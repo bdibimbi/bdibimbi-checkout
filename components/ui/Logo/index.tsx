@@ -1,6 +1,6 @@
+import Link from "next/link"
 import styled from "styled-components"
 import tw from "twin.macro"
-import Link from "next/link"
 
 interface Props {
   logoUrl?: string
