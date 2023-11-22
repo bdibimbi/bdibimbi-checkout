@@ -123,6 +123,8 @@
         "billing_address_zip_code": "CAP",
         "billing_address_phone": "Telefono",
         "billing_address_billing_info": "Informazioni di fatturazione",
+        "billing_address_billing_info_1": "Codice Fiscale o P. IVA",
+        "billing_address_billing_info_2": "Codice SDI",
         "ship_to_different_address": "Spedisci ad un altro indirizzo",
         "shipping_address_title": "Indirizzo di spedizione",
         "shipping_address_first_name": "Nome",

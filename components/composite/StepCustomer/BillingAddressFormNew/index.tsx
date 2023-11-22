@@ -4,6 +4,7 @@ import styled from "styled-components"
 import tw from "twin.macro"
 
 import { ShippingToggleProps } from "components/composite/StepCustomer"
+import { AddressBillingInfoSplit } from "components/composite/StepCustomer/AddressBillingInfoSplit"
 import { AddressInputGroup } from "components/composite/StepCustomer/AddressInputGroup"
 import { AppContext } from "components/data/AppProvider"
 
@@ -21,8 +22,6 @@ export const BillingAddressFormNew: React.FC<Props> = ({
   if (!appCtx) {
     return null
   }
-
-  const { requiresBillingInfo } = appCtx
 
   return (
     <Wrapper>
@@ -88,14 +87,13 @@ export const BillingAddressFormNew: React.FC<Props> = ({
         type="tel"
         value={billingAddress?.phone || ""}
       />
-      {requiresBillingInfo && (
-        <AddressInputGroup
-          fieldName="billing_address_billing_info"
-          resource="billing_address"
-          type="text"
-          value={billingAddress?.billing_info || ""}
-        />
-      )}
+      <AddressBillingInfoSplit
+        fieldName="billing_address_billing_info"
+        resource="billing_address"
+        type="text"
+        value={billingAddress?.billing_info || ""}
+        required={false}
+      />
     </Wrapper>
   )
 }
