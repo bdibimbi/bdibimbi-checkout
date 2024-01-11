@@ -7,29 +7,42 @@ import { AddressInputGroup } from "components/composite/StepCustomer/AddressInpu
 
 interface Props {
   shippingAddress: NullableType<Address>
+  isBusiness?: boolean
 }
 
 export const ShippingAddressFormNew: React.FC<Props> = ({
   shippingAddress,
+  isBusiness,
 }: Props) => {
   return (
     <Fragment>
-      <Grid>
+      {!isBusiness ? (
+        <Grid>
+          <AddressInputGroup
+            fieldName="shipping_address_first_name"
+            resource="shipping_address"
+            type="text"
+            value={shippingAddress?.first_name || ""}
+            required={!isBusiness}
+          />
+
+          <AddressInputGroup
+            fieldName="shipping_address_last_name"
+            resource="shipping_address"
+            type="text"
+            value={shippingAddress?.last_name || ""}
+            required={!isBusiness}
+          />
+        </Grid>
+      ) : (
         <AddressInputGroup
-          fieldName="shipping_address_first_name"
+          fieldName="shipping_address_company"
           resource="shipping_address"
           type="text"
-          value={shippingAddress?.first_name || ""}
+          value={shippingAddress?.company || ""}
+          required={isBusiness}
         />
-
-        <AddressInputGroup
-          fieldName="shipping_address_last_name"
-          resource="shipping_address"
-          type="text"
-          value={shippingAddress?.last_name || ""}
-        />
-      </Grid>
-
+      )}
       <AddressInputGroup
         fieldName="shipping_address_line_1"
         resource="shipping_address"

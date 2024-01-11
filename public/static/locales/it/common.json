@@ -109,10 +109,12 @@
     },
 
     "addressForm" : {
+        "is_business": "Sono un'azienda",
         "customer_email" : "La tua email",
         "billing_address_title": "Indirizzo di fatturazione",
         "billing_address_first_name": "Nome",
         "billing_address_last_name": "Cognome",
+        "billing_address_company": "Ragione sociale",
         "billing_address_line_1": "Indirizzo",
         "billing_address_line_2": "Presso",
         "billing_address_city": "Città",
@@ -129,6 +131,7 @@
         "shipping_address_title": "Indirizzo di spedizione",
         "shipping_address_first_name": "Nome",
         "shipping_address_last_name": "Cognome",
+        "shipping_address_company": "Ragione sociale",
         "shipping_address_line_1": "Indirizzo",
         "shipping_address_line_2": "Presso",
         "shipping_address_city": "Città",

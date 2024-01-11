@@ -36,6 +36,7 @@ export const CustomerAddressCard: React.FC<AddressCardProps> = ({
             <CustomAddress
               firstName={address.first_name}
               lastName={address.last_name}
+              company={address.company}
               city={address.city}
               line1={address.line_1}
               line2={address.line_2}
@@ -55,6 +56,7 @@ export const CustomerAddressCard: React.FC<AddressCardProps> = ({
 interface AddressProps {
   firstName: NullableType<string>
   lastName: NullableType<string>
+  company: NullableType<string>
   city: NullableType<string>
   line1: NullableType<string>
   line2: NullableType<string>
@@ -68,6 +70,7 @@ interface AddressProps {
 export const CustomAddress = ({
   firstName,
   lastName,
+  company,
   city,
   line1,
   line2,
@@ -80,6 +83,7 @@ export const CustomAddress = ({
   <>
     <p className="font-bold text-md" data-testid={`fullname_${addressType}`}>
       {firstName} {lastName}
+      {company}
     </p>
     <p
       className="text-sm text-gray-500"

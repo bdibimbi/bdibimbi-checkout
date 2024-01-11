@@ -11,11 +11,13 @@ import { AppContext } from "components/data/AppProvider"
 interface Props {
   billingAddress: NullableType<Address>
   openShippingAddress: (props: ShippingToggleProps) => void
+  isBusiness?: boolean
 }
 
 export const BillingAddressFormNew: React.FC<Props> = ({
   billingAddress,
   openShippingAddress,
+  isBusiness,
 }: Props) => {
   const appCtx = useContext(AppContext)
 
@@ -25,20 +27,32 @@ export const BillingAddressFormNew: React.FC<Props> = ({
 
   return (
     <Wrapper>
-      <Grid>
+      {!isBusiness ? (
+        <Grid>
+          <AddressInputGroup
+            fieldName="billing_address_first_name"
+            resource="billing_address"
+            type="text"
+            value={billingAddress?.first_name || ""}
+            required={!isBusiness}
+          />
+          <AddressInputGroup
+            fieldName="billing_address_last_name"
+            resource="billing_address"
+            type="text"
+            value={billingAddress?.last_name || ""}
+            required={!isBusiness}
+          />
+        </Grid>
+      ) : (
         <AddressInputGroup
-          fieldName="billing_address_first_name"
+          fieldName="billing_address_company"
           resource="billing_address"
           type="text"
-          value={billingAddress?.first_name || ""}
+          value={billingAddress?.company || ""}
+          required={isBusiness}
         />
-        <AddressInputGroup
-          fieldName="billing_address_last_name"
-          resource="billing_address"
-          type="text"
-          value={billingAddress?.last_name || ""}
-        />
-      </Grid>
+      )}
       <AddressInputGroup
         fieldName="billing_address_line_1"
         resource="billing_address"

@@ -51,6 +51,7 @@ export const CheckoutAddresses: React.FC<Props> = ({
 
   const [shippingAddressFill, setShippingAddressFill] =
     useState<NullableType<Address>>(shippingAddress)
+  const [isBusiness, setIsBusiness] = useState(!!billingAddress?.company)
 
   const handleToggleDifferentAddress = () => {
     return [
@@ -71,7 +72,18 @@ export const CheckoutAddresses: React.FC<Props> = ({
         emailAddress={emailAddress}
         setCustomerEmail={setCustomerEmail}
       />
-      <AddressesContainer shipToDifferentAddress={shipToDifferentAddress}>
+      <Toggle
+        disabled={false}
+        data-testid="button-set-is-business"
+        data-status={isBusiness}
+        label={t(`addressForm.is_business`)}
+        checked={isBusiness}
+        onChange={() => setIsBusiness(!isBusiness)}
+      />
+      <AddressesContainer
+        shipToDifferentAddress={shipToDifferentAddress}
+        isBusiness={isBusiness}
+      >
         <div className="mt-4">
           <AddressSectionTitle>
             {t(`addressForm.billing_address_title`)}
@@ -82,6 +94,7 @@ export const CheckoutAddresses: React.FC<Props> = ({
             <BillingAddressFormNew
               billingAddress={billingAddress}
               openShippingAddress={openShippingAddress}
+              isBusiness={isBusiness}
             />
           </div>
         </BillingAddressForm>
@@ -106,7 +119,10 @@ export const CheckoutAddresses: React.FC<Props> = ({
               {t(`addressForm.shipping_address_title`)}
             </AddressSectionTitle>
             <div className="mt-4">
-              <ShippingAddressFormNew shippingAddress={shippingAddressFill} />
+              <ShippingAddressFormNew
+                shippingAddress={shippingAddressFill}
+                isBusiness={isBusiness}
+              />
             </div>
           </ShippingAddressForm>
         )}

@@ -132,6 +132,7 @@ export const StepComplete: React.FC<Props> = ({
                       <CustomAddress
                         firstName={ctx.billingAddress?.first_name ?? ""}
                         lastName={ctx.billingAddress?.last_name ?? ""}
+                        company={ctx.billingAddress?.company ?? ""}
                         city={ctx.billingAddress?.city ?? ""}
                         line1={ctx.billingAddress?.line_1 ?? ""}
                         line2={ctx.billingAddress?.line_2 ?? ""}
@@ -153,6 +154,7 @@ export const StepComplete: React.FC<Props> = ({
                           <CustomAddress
                             firstName={ctx.shippingAddress?.first_name ?? ""}
                             lastName={ctx.shippingAddress?.last_name ?? ""}
+                            company={ctx.shippingAddress?.company ?? ""}
                             city={ctx.shippingAddress?.city ?? ""}
                             line1={ctx.shippingAddress?.line_1 ?? ""}
                             line2={ctx.shippingAddress?.line_2 ?? ""}
