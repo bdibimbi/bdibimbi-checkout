@@ -106,7 +106,7 @@ export const BillingAddressFormNew: React.FC<Props> = ({
         resource="billing_address"
         type="text"
         value={billingAddress?.billing_info || ""}
-        required={false}
+        required={isBusiness}
       />
     </Wrapper>
   )
