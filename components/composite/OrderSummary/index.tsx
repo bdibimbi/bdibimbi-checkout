@@ -215,6 +215,21 @@ export const OrderSummary: React.FC<Props> = ({ appCtx, readonly }) => {
               className="text-xl font-extrabold"
             />
           </RecapLineTotal>
+          <RecapLine>
+            <DiscountAmount>
+              {(props) => {
+                if (props.priceCents === 0)
+                  return (
+                    <div className="mt-3">
+                      <RecapLineItem>
+                        {t("orderRecap.discount_pending")}
+                      </RecapLineItem>
+                    </div>
+                  )
+                return <></>
+              }}
+            </DiscountAmount>
+          </RecapLine>
           <ReturnToCart cartUrl={appCtx.cartUrl} />
         </AmountWrapper>
       </TotalWrapper>
