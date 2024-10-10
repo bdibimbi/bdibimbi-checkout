@@ -27,8 +27,6 @@ export const BillingAddressFormNew: React.FC<Props> = ({
     return null
   }
 
-  const { requiresBillingInfo } = appCtx
-
   const countries = settings?.config?.checkout?.billing_countries
   const states = settings?.config?.checkout?.billing_states
   const defaultCountry = settings?.config?.checkout?.default_country
