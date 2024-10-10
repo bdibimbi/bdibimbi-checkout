@@ -163,7 +163,7 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
         isBusiness={isBusiness}
       >
         <AddressSectionTitle data-testid="billing-address">
-          {t(`addressForm.billing_address_title`)}
+          <>{t(`addressForm.billing_address_title`)}</>
         </AddressSectionTitle>
         <div className="relative">
           <>
@@ -237,7 +237,7 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
             />
             <div className={`${shipToDifferentAddress ? "" : "hidden"} mb-2`}>
               <AddressSectionTitle data-testid="shipping-address">
-                {t(`addressForm.shipping_address_title`)}
+                <>{t(`addressForm.shipping_address_title`)}</>
               </AddressSectionTitle>
             </div>
             <div
