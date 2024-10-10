@@ -230,7 +230,6 @@ export const OrderSummary: React.FC<Props> = ({ appCtx, readonly }) => {
               }}
             </DiscountAmount>
           </RecapLine>
-          <ReturnToCart cartUrl={appCtx.cartUrl} />
           {!appCtx.isComplete && <ReturnToCart cartUrl={appCtx.cartUrl} />}
         </AmountWrapper>
       </TotalWrapper>
