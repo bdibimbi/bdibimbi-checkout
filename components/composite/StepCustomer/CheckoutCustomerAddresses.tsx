@@ -170,6 +170,7 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
             {hasCustomerAddresses && (
               <>
                 <Transition
+                  as="div"
                   show={!showBillingAddressForm}
                   {...addressesTransition}
                 >
@@ -195,6 +196,7 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
           </>
           <div className="top-0 mt-4">
             <Transition
+              as="div"
               show={showBillingAddressForm}
               beforeEnter={() => setMountBillingAddressForm(true)}
               afterLeave={() => setMountBillingAddressForm(false)}
@@ -249,6 +251,7 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
             >
               <Transition
                 show={!showShippingAddressForm}
+                as="div"
                 {...addressesTransition}
               >
                 <GridContainer className="mb-4">
@@ -276,6 +279,7 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
             </div>
             <div className="mt-4">
               <Transition
+                as="div"
                 show={showShippingAddressForm}
                 beforeEnter={() => setMountShippingAddressForm(true)}
                 beforeLeave={() => setMountShippingAddressForm(false)}

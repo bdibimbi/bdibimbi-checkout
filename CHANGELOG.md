@@ -1,3 +1,25 @@
+## [4.12.1](https://github.com/commercelayer/mfe-checkout/compare/v4.12.0...v4.12.1) (2024-11-21)
+
+
+### Bug Fixes
+
+* address vulnerability on dependencies ([c790678](https://github.com/commercelayer/mfe-checkout/commit/c790678be0e9960544ca4457dd36ad33fd6fe6ab))
+
+# [4.12.0](https://github.com/commercelayer/mfe-checkout/compare/v4.11.3...v4.12.0) (2024-11-14)
+
+
+### Features
+
+* upgrade dependencies ([93fceac](https://github.com/commercelayer/mfe-checkout/commit/93fceace252b2288a70938fc9b5a61418c0c57c5))
+* upgrade to nextjs 15 ([380e7d3](https://github.com/commercelayer/mfe-checkout/commit/380e7d303bd92837d268cc903c0bcdacf543e932))
+
+## [4.11.3](https://github.com/commercelayer/mfe-checkout/compare/v4.11.2...v4.11.3) (2024-10-10)
+
+
+### Bug Fixes
+
+* avoid infinite loop for expired access token ([48352df](https://github.com/commercelayer/mfe-checkout/commit/48352df71f5919311ccc2ac32957eca53f643b24))
+
 ## [4.11.2](https://github.com/commercelayer/mfe-checkout/compare/v4.11.1...v4.11.2) (2024-10-03)
 
 
