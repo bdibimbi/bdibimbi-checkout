@@ -18,9 +18,7 @@ test.describe("with physical product", () => {
     },
   })
 
-  test.skip("should execute a checkout with klarna", async ({
-    checkoutPage,
-  }) => {
+  test.skip("should execute a checkout with klarna", async ({ checkoutPage }) => {
     await checkoutPage.checkOrderSummary("Order Summary")
 
     await checkoutPage.setCustomerMail()
@@ -72,9 +70,7 @@ test.describe("with digital product", () => {
     },
   })
 
-  test.skip("should execute a checkout with klarna", async ({
-    checkoutPage,
-  }) => {
+  test.skip("should execute a checkout with klarna", async ({ checkoutPage }) => {
     await checkoutPage.checkOrderSummary("Order Summary")
 
     await checkoutPage.setCustomerMail()
