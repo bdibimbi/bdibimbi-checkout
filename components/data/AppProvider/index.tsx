@@ -171,7 +171,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({
       state.customerAddresses
     )
     setTimeout(() => {
-      console.log("TIMED OUT: SET_ADDRESSES")
       dispatch({
         type: ActionType.SET_ADDRESSES,
         payload: {
@@ -194,7 +193,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({
         state.customerAddresses
       )
       setTimeout(() => {
-        console.log("TIMED OUT: CHANGE_COUPON_OR_GIFTCARD")
         dispatch({
           type: ActionType.CHANGE_COUPON_OR_GIFTCARD,
           payload: { order: currentOrder, others },
@@ -244,7 +242,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({
       state.customerAddresses
     )
     setTimeout(() => {
-      console.log("TIMED OUT: **AUTO** SAVE_SHIPMENTS")
       dispatch({
         type: ActionType.SAVE_SHIPMENTS,
         payload: { order: currentOrder, others },
@@ -265,7 +262,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({
     )
 
     setTimeout(() => {
-      console.log("TIMED OUT: **MANUAL** SAVE_SHIPMENTS")
       dispatch({
         type: ActionType.SAVE_SHIPMENTS,
         payload: { order: currentOrder, others },
