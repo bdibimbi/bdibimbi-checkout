@@ -118,7 +118,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({
   }
 
   const fetchInitialOrder = async (orderId?: string, accessToken?: string) => {
-    console.log("FETCHING INITIAL ORDER", orderId)
     if (!orderId || !accessToken) {
       return
     }
@@ -311,10 +310,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({
   }
 
   useEffect(() => {
-    const fetchData = async () => {
-      await fetchInitialOrder(orderId, accessToken)
+    const unsubscribe = () => {
+      fetchInitialOrder(orderId, accessToken)
     }
-    fetchData()
+    return unsubscribe()
   }, [orderId, accessToken])
 
   return (
