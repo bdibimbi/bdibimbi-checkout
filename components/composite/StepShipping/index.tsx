@@ -126,6 +126,7 @@ export const StepShipping: React.FC<Props> = () => {
     appCtx
 
   const [canContinue, setCanContinue] = useState(false)
+  const [pickupNotAvailable, setPickupNotAvailable] = useState(false)
   const [isLocalLoader, setIsLocalLoader] = useState(false)
   const [outOfStockError, setOutOfStockError] = useState(false)
   const [shippingMethodError, setShippingMethodError] = useState(false)
@@ -138,11 +139,43 @@ export const StepShipping: React.FC<Props> = () => {
     }
   }, [shipments])
 
-  const handleChange = (params: {
+  const handleChange = async (params: {
     shippingMethod: ShippingMethodCollection
     shipmentId: string
     order?: Order
-  }): void => {
+  }) => {
+    setPickupNotAvailable(false)
+    const metadata = params.shippingMethod.metadata
+    if (metadata?.isPickup) {
+      const lineItems = params.order?.line_items?.filter(
+        ({ item_type, sku_code }) =>
+          item_type === "skus" && !sku_code?.startsWith("GC_")
+      )
+      if (!lineItems?.length) return
+      const response = await Promise.all(
+        lineItems.map(({ sku_code }) =>
+          fetch(
+            `${process.env.NEXT_PUBLIC_MAIN_URL}/api/cl/get-in-store-availability/${metadata.stockLocationId}/${sku_code}`
+          )
+        )
+      )
+
+      const responses = []
+      for (const resp of response) {
+        responses.push(await resp.json())
+      }
+
+      const availability = responses.reduce((acc, item) => {
+        if (!item.available) {
+          // eslint-disable-next-line no-param-reassign
+          acc = false
+          return acc
+        }
+        return acc
+      }, true)
+
+      setPickupNotAvailable(!availability)
+    }
     selectShipment({
       shippingMethod: params.shippingMethod,
       shipmentId: params.shipmentId,
@@ -359,7 +392,11 @@ export const StepShipping: React.FC<Props> = () => {
                           </Shipment>
                           <ButtonWrapper>
                             <Button
-                              disabled={!canContinue || isLocalLoader}
+                              disabled={
+                                !canContinue ||
+                                isLocalLoader ||
+                                pickupNotAvailable
+                              }
                               // disabled={!canContinue || isLocalLoader}
                               data-testid="save-shipping-button"
                               onClick={handleSave}
