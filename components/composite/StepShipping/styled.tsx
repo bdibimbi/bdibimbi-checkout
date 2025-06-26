@@ -5,7 +5,7 @@ import tw from "twin.macro"
 import { RadioCss } from "components/ui/form/RadioButton"
 
 export const ShippingWrapper = styled.div`
-  ${tw`mb-5`}
+  ${tw`mb-5 mt-6`}
   :not(:first-of-type) {
     ${tw`pt-5 mt-5 border-dashed border-t-2`}
   }
@@ -15,9 +15,6 @@ export const ShippingTitle = styled.h4`
 `
 export const ShippingSummary = styled.div`
   ${tw`contents`}
-  input:checked + label {
-    ${tw`border-2 border-primary shadow-md bg-gray-50`}
-  }
 `
 export const ShippingSummaryItem = styled.div`
   ${tw`flex flex-1 font-bold ml-2 flex-col md:flex-row`}

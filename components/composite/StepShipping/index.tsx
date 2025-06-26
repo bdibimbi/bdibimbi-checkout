@@ -186,19 +186,19 @@ export const StepShipping: React.FC<Props> = () => {
   const handleSave = async () => {
     setIsLocalLoader(true)
 
-    saveShipments()
+    const updatedOrder = await saveShipments()
 
     setIsLocalLoader(false)
     if (gtmCtx?.fireAddShippingInfo) {
-      await gtmCtx.fireAddShippingInfo()
+      await gtmCtx.fireAddShippingInfo(updatedOrder)
     }
   }
 
   const autoSelectCallback = async (order?: Order) => {
+    const updatedOrder = await appCtx.autoSelectShippingMethod(order)
     if (gtmCtx?.fireAddShippingInfo) {
-      await gtmCtx.fireAddShippingInfo()
+      await gtmCtx.fireAddShippingInfo(updatedOrder)
     }
-    await appCtx.autoSelectShippingMethod(order)
   }
 
   return (
@@ -233,7 +233,7 @@ export const StepShipping: React.FC<Props> = () => {
                             autoSelectSingleShippingMethod={autoSelectCallback}
                             loader={
                               <div className="animate-pulse">
-                                <div className="w-1/2 h-5 bg-gray-200" />
+                                <div className="w-1/2 h-5 mt-6 bg-gray-200" />
                                 <div className="h-20 my-5 bg-gray-200" />
                               </div>
                             }
@@ -273,7 +273,7 @@ export const StepShipping: React.FC<Props> = () => {
                                   <ShippingSummary data-testid="shipping-methods-container">
                                     <StyledShippingMethodRadioButton
                                       data-testid="shipping-method-button"
-                                      className="form-radio mt-0.5 md:mt-0"
+                                      className="form-radio mt-0.5 md:mt-0 peer"
                                       onChange={(params) =>
                                         handleChange(params)
                                       }
@@ -286,7 +286,7 @@ export const StepShipping: React.FC<Props> = () => {
                                           props?.deliveryLeadTimeForShipment
                                         return (
                                           <label
-                                            className="flex flex-col p-3 border rounded cursor-pointer hover:border-primary transition duration-200 ease-in"
+                                            className="flex flex-col p-3 border rounded cursor-pointer hover:border-primary transition duration-200 ease-in peer-checked:border-2 peer-checked:border-primary peer-checked:shadow-md peer-checked:bg-gray-50"
                                             htmlFor={props.htmlFor}
                                           >
                                             <ShippingLineItemTitle>

@@ -7,6 +7,7 @@ import { ShippingToggleProps } from "components/composite/StepCustomer"
 import { AddressBillingInfoSplit } from "components/composite/StepCustomer/AddressBillingInfoSplit"
 import { AddressInputGroup } from "components/composite/StepCustomer/AddressInputGroup"
 import { AppContext } from "components/data/AppProvider"
+import { useSettingsOrInvalid } from "components/hooks/useSettingsOrInvalid"
 
 interface Props {
   billingAddress: NullableType<Address>
@@ -20,10 +21,15 @@ export const BillingAddressFormNew: React.FC<Props> = ({
   isBusiness,
 }: Props) => {
   const appCtx = useContext(AppContext)
+  const { settings } = useSettingsOrInvalid()
 
-  if (!appCtx) {
+  if (!appCtx || !settings) {
     return null
   }
+
+  const countries = settings?.config?.checkout?.billing_countries
+  const states = settings?.config?.checkout?.billing_states
+  const defaultCountry = settings?.config?.checkout?.default_country
 
   return (
     <Wrapper>
@@ -77,6 +83,9 @@ export const BillingAddressFormNew: React.FC<Props> = ({
           fieldName="billing_address_country_code"
           resource="billing_address"
           type="text"
+          // @ts-expect-error missing type
+          countries={countries}
+          defaultCountry={defaultCountry}
           openShippingAddress={openShippingAddress}
           value={billingAddress?.country_code || ""}
         />
@@ -85,6 +94,8 @@ export const BillingAddressFormNew: React.FC<Props> = ({
         <AddressInputGroup
           fieldName="billing_address_state_code"
           resource="billing_address"
+          // @ts-expect-error missing type
+          states={states}
           type="text"
           value={billingAddress?.state_code || ""}
         />
@@ -106,7 +117,7 @@ export const BillingAddressFormNew: React.FC<Props> = ({
         resource="billing_address"
         type="text"
         value={billingAddress?.billing_info || ""}
-        required={false}
+        required={isBusiness}
       />
     </Wrapper>
   )

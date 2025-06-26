@@ -163,13 +163,14 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
         isBusiness={isBusiness}
       >
         <AddressSectionTitle data-testid="billing-address">
-          {t(`addressForm.billing_address_title`)}
+          <>{t(`addressForm.billing_address_title`)}</>
         </AddressSectionTitle>
         <div className="relative">
           <>
             {hasCustomerAddresses && (
               <>
                 <Transition
+                  as="div"
                   show={!showBillingAddressForm}
                   {...addressesTransition}
                 >
@@ -195,6 +196,7 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
           </>
           <div className="top-0 mt-4">
             <Transition
+              as="div"
               show={showBillingAddressForm}
               beforeEnter={() => setMountBillingAddressForm(true)}
               afterLeave={() => setMountBillingAddressForm(false)}
@@ -237,7 +239,7 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
             />
             <div className={`${shipToDifferentAddress ? "" : "hidden"} mb-2`}>
               <AddressSectionTitle data-testid="shipping-address">
-                {t(`addressForm.shipping_address_title`)}
+                <>{t(`addressForm.shipping_address_title`)}</>
               </AddressSectionTitle>
             </div>
             <div
@@ -249,6 +251,7 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
             >
               <Transition
                 show={!showShippingAddressForm}
+                as="div"
                 {...addressesTransition}
               >
                 <GridContainer className="mb-4">
@@ -276,6 +279,7 @@ export const CheckoutCustomerAddresses: React.FC<Props> = ({
             </div>
             <div className="mt-4">
               <Transition
+                as="div"
                 show={showShippingAddressForm}
                 beforeEnter={() => setMountShippingAddressForm(true)}
                 beforeLeave={() => setMountShippingAddressForm(false)}

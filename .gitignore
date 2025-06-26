@@ -37,6 +37,3 @@ cypress/fixtures/*
 
 # vercel
 .vercel
-
-# intellij idea
-.idea

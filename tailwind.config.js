@@ -54,7 +54,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      sofia: ['Sofia', 'sans-serif'],
+      sofia: ["Sofia", "ui-sans-serif", "sans-serif"],
     },
     borderColor: (theme) => ({
       ...theme("colors"),
