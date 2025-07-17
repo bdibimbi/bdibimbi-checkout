@@ -9,7 +9,11 @@ interface Props {
 
 export const Logo: React.FC<Props> = ({ logoUrl, companyName, className }) => {
   if (logoUrl) {
-    return <Image src={logoUrl} alt={companyName} className={className} />
+    return (
+      <a href={process.env.NEXT_PUBLIC_MAIN_URL ?? "/"}>
+        <Image src={logoUrl} alt={companyName} className={className} />
+      </a>
+    )
   }
   return <Label className={className}>{companyName}</Label>
 }
