@@ -1,12 +1,14 @@
+import { ReactNode } from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
 
 interface Props {
-  label: string
+  label: ReactNode
   checked: boolean
   onChange: () => void
   className?: string
   disabled: boolean
+  wrapper?: boolean
 }
 
 export const Toggle: React.FC<Props> = ({
@@ -15,10 +17,11 @@ export const Toggle: React.FC<Props> = ({
   onChange,
   className,
   disabled,
+  wrapper = true,
   ...rest
 }) => {
   return (
-    <Wrapper>
+    <div className={wrapper? `mt-5 py-4 border-t` : 'mt-1 py-4'}>
       <ButtonToggle className={className} checked={checked}>
         <ButtonTrack
           disabled={disabled}
@@ -31,13 +34,9 @@ export const Toggle: React.FC<Props> = ({
         </ButtonTrack>
         <Label>{label}</Label>
       </ButtonToggle>
-    </Wrapper>
+    </div>
   )
 }
-
-const Wrapper = styled.div`
-  ${tw`mt-5 py-4 border-t`}
-`
 
 const ButtonTrack = styled.button`
   ${tw`mt-0.5 relative inline-flex flex-shrink-0 h-4 w-7 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none`}
