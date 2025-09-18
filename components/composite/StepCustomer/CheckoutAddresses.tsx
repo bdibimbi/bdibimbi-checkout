@@ -103,6 +103,7 @@ export const CheckoutAddresses: React.FC<Props> = ({
             i18nKey={`addressForm.newsletter_subscribe`}
             components={[
               <a
+                key="pp-link"
                 className="text-mavelous hover:underline"
                 href="https://bdibimbi.it/privacy-policy"
               ></a>,
