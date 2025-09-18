@@ -2,7 +2,7 @@
   "name": "mfe-checkout",
   "version": "4.0.15",
   "engines": {
-    "node": "18.x"
+    "node": ">=20.x"
   },
   "private": true,
   "scripts": {
