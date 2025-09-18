@@ -4,7 +4,7 @@ import SaveAddressesButton from "@commercelayer/react-components/addresses/SaveA
 import ShippingAddressForm from "@commercelayer/react-components/addresses/ShippingAddressForm"
 import type { Address, Order } from "@commercelayer/sdk"
 import { useState, Fragment, useEffect, Dispatch, SetStateAction } from "react"
-import { useTranslation } from "react-i18next"
+import { Trans, useTranslation } from "react-i18next"
 import styled from "styled-components"
 
 import { ShippingToggleProps } from "components/composite/StepCustomer"
@@ -45,19 +45,40 @@ export const CheckoutAddresses: React.FC<Props> = ({
   openShippingAddress,
   disabledShipToDifferentAddress,
   setCustomerEmail,
-  handleSave,
+  handleSave: _handleSave,
 }: Props) => {
   const { t } = useTranslation()
 
   const [shippingAddressFill, setShippingAddressFill] =
     useState<NullableType<Address>>(shippingAddress)
   const [isBusiness, setIsBusiness] = useState(!!billingAddress?.company)
+  const [newsletterSubscribe, setNewsletterSubscribe] = useState(false)
 
   const handleToggleDifferentAddress = () => {
     return [
       setShipToDifferentAddress(!shipToDifferentAddress),
       setShippingAddressFill(undefined),
     ]
+  }
+
+  const handleSave: (params: {
+    success: boolean
+    order?: Order | undefined
+  }) => void = (params) => {
+    if (emailAddress) {
+      fetch(`${process.env.MAILUP_URL}/frontend/subscribe.aspx`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          email: emailAddress,
+          list: "1",
+          group: "6",
+        }),
+      })
+    }
+    _handleSave(params)
   }
 
   useEffect(() => {
@@ -72,6 +93,26 @@ export const CheckoutAddresses: React.FC<Props> = ({
         emailAddress={emailAddress}
         setCustomerEmail={setCustomerEmail}
       />
+      <Toggle
+        wrapper={false}
+        disabled={false}
+        data-testid="button-set-newsletter"
+        data-status={newsletterSubscribe}
+        label={
+          <Trans
+            i18nKey={`addressForm.newsletter_subscribe`}
+            components={[
+              <a
+                className="text-mavelous hover:underline"
+                href="https://bdibimbi.it/privacy-policy"
+              ></a>,
+            ]}
+          />
+        }
+        checked={newsletterSubscribe}
+        onChange={() => setNewsletterSubscribe(!newsletterSubscribe)}
+      />
+
       <Toggle
         disabled={false}
         data-testid="button-set-is-business"

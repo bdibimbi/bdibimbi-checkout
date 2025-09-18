@@ -110,6 +110,7 @@
 
     "addressForm" : {
         "is_business": "Sono un'azienda",
+        "newsletter_subscribe": "Dichiaro di aver letto e accettato la <0>Privacy & Cookie Policy</0> e acconsento al trattamento dei miei dati personali per l’iscrizione alla newsletter e la ricezione di comunicazioni commerciali.",
         "customer_email" : "La tua email",
         "billing_address_title": "Indirizzo di fatturazione",
         "billing_address_first_name": "Nome",

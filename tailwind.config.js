@@ -24,6 +24,7 @@ module.exports = {
       transparent: "transparent",
       black: "#101111",
       white: "#fff",
+      mavelous: "#f087aa",
       gray: {
         // 100: "#f8f8f8",
         // 300: "#E6E6E6",
