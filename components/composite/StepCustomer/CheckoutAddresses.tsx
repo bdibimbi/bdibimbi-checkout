@@ -66,7 +66,7 @@ export const CheckoutAddresses: React.FC<Props> = ({
     order?: Order | undefined
   }) => void = (params) => {
     if (emailAddress) {
-      fetch(`${process.env.MAILUP_URL}/frontend/subscribe.aspx`, {
+      fetch(`${process.env.NEXT_PUBLIC_MAILUP_URL}/frontend/subscribe.aspx`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -103,7 +103,7 @@ export const CheckoutAddresses: React.FC<Props> = ({
             i18nKey={`addressForm.newsletter_subscribe`}
             components={[
               <a
-                key="pp-link"
+                key={"pp-link"}
                 className="text-mavelous hover:underline"
                 href="https://bdibimbi.it/privacy-policy"
               ></a>,
