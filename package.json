@@ -1,9 +1,6 @@
 {
   "name": "mfe-checkout",
   "version": "4.12.1",
-  "engines": {
-    "node": ">=20.x"
-  },
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
