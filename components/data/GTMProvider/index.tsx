@@ -74,7 +74,7 @@ export const GTMProvider: React.FC<GTMProviderProps> = ({
     return {
       item_id: sku_code || bundle_code,
       item_name: name,
-      price: total_amount_float / quantity,
+      price: total_amount_float,
       currency: currency_code,
       quantity,
     }
