@@ -18,7 +18,7 @@
         "shipments": "Alcune spedizioni mancano del metodo di spedizione",
         "paymentMethod": "Lo step del pagamento non può rimanere vuoto",
         "transition": "La transizione non è consentita",
-        "payer": "Non è stato approvato il pagamento",  
+        "payer": "Non è stato approvato il pagamento",
         "resourceID": "L'ID della risorsa richiesto non è stato trovato"
     },
 
@@ -152,8 +152,8 @@
         "description": "Ordine <WrapperOrderId>#{{orderNumber}}</WrapperOrderId>",
         "continue": "Continua lo shopping",
         "supportEmail": "Se hai domande, puoi inviarci un'e-mail a <br /><WrapperStyle><WrapperEmail>{{email}}</WrapperEmail></WrapperStyle>",
-        "supportPhone": "Se hai domande, puoi chiamarci al numero <br /><WrapperStyle><WrapperPhone>{{phone}}</WrapperPhone></WrapperStyle>",
-        "fullSupport": "Se hai domande, puoi inviarci un'email a <br /><WrapperStyle><WrapperEmail>{{email}}</WrapperEmail></WrapperStyle> o chiamarci al <WrapperStyle><WrapperPhone>{{phone}}</WrapperPhone></WrapperStyle>",
+        "supportPhone": "Se hai domande, puoi scriverci al numero whatsapp <br /><WrapperStyle><WrapperPhone>{{phone}}</WrapperPhone></WrapperStyle>",
+        "fullSupport": "Se hai domande, puoi inviarci un'email a <br /><WrapperStyle><WrapperEmail>{{email}}</WrapperEmail></WrapperStyle> o scriverci al <WrapperStyle><WrapperPhone>{{phone}}</WrapperPhone></WrapperStyle>",
         "ship_to": "Spedito a:",
         "billed_to": "Fatturato a:",
         "payment": "Pagamento:",
